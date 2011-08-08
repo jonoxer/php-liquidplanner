@@ -5,7 +5,7 @@ Author: Jonathan Oxer <mailto:jon.oxer@ivt.com.au>
 
 Library to simplify interaction with the Liquid Planner API from PHP.
 
-Liquid Planner: <www.liquidplanner.com>
+Liquid Planner: <http://www.liquidplanner.com/>
 
 
 License
