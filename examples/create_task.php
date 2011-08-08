@@ -20,7 +20,7 @@ $task['description'] = "Description of my LP ticket";
 /* Create an instance of the Liquid Planner object */
 $lp = new LiquidPlanner("12345", "you@example.com", "yourLPpassword");
 
-/* Create a new ticket in Liquid Planner */
+/* Create a new task in Liquid Planner */
 $response = $lp->create_task($task);
 echo "ID of the new task: ".$response['id']."\n";
 
