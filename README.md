@@ -1,7 +1,7 @@
 php-liquidplanner
 =================
-Copyright 2011 Internet Vision Technologies <www.ivt.com.au>  
-Author Jonathan Oxer <jon.oxer@ivt.com.au>  
+Copyright 2011 Internet Vision Technologies <http://www.ivt.com.au/>  
+Author: Jonathan Oxer <mailto:jon.oxer@ivt.com.au>  
 
 Library to simplify interaction with the Liquid Planner API from PHP.
 
