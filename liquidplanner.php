@@ -44,6 +44,7 @@ class LiquidPlanner
 
 	/**
 	 * Updates the low and high time estimates for a specifed task.
+	 * NOTE: This method currently does not work. Do not use!
 	 *
 	 * @param int $taskid ID of Liquid Planner task to update
 	 * @param array $data Values to apply to the specified task
@@ -84,6 +85,7 @@ class LiquidPlanner
 	 */
 	private function execute_connection($url, $encodedTask)
 	{
+		//print_r($encodedTask);
 		/* Set up the CURL object and execute it */
 		$conn = curl_init();
 		curl_setopt($conn, CURLOPT_HEADER, FALSE);                                       // Suppress display of the response header

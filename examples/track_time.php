@@ -1,9 +1,6 @@
 #!/usr/bin/php
 <?php
 /**
- * NOTE: The 'estimate' method is currently broken. This example will
- * not work!
- *
  * @author Jonathan Oxer <jon.oxer@ivt.com.au>
  * @version 2011-08-08
  *
@@ -16,14 +13,14 @@
  */
 require_once("../liquidplanner.php");
 
-$taskID           = 123456;
-$taskData['low']  = "4h";
-$taskData['high'] = "8h";
+$taskID                  = 123456;
+$taskData['work']        = "2";
+$taskData['activity_id'] = "12345";
 
 /* Create an instance of the Liquid Planner object */
 $lp = new LiquidPlanner("12345", "you@example.com", "yourLPpassword");
 
 /* Update the low and high estimated remaining time values */
-$response = $lp->estimate($taskID, $taskData);
+$response = $lp->track_time($taskID, $taskData);
 
 exit;
