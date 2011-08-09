@@ -43,8 +43,35 @@ class LiquidPlanner
 	}
 
 	/**
+	 * Updates the low and high time estimates for a specifed task.
+	 *
+	 * @param int $taskid ID of Liquid Planner task to update
+	 * @param array $data Values to apply to the specified task
+	 *  - 'low': low estimated time (float)
+	 *  - 'high': high estimated time (float)
+	 * @return array Response from Liquid Planner
 	 */
-	public function update_estimate($taskid, array $data)
+	public function estimate($taskid, array $data)
+	{
+		$encodedTask = json_encode($data);
+		$url = $this->serviceurl.'/treeitems/'.$taskid.'/estimates';
+		$response = $this->execute_connection($url, $encodedTask);
+		return($response);
+	}
+
+	/**
+	 * Updates the time values (both work completed and estimates)
+	 * of tasks.
+	 * @param int $taskid ID of Liquid Planner task to update
+	 * @param array $data Values to apply to the specified task
+	 *  - 'member_id': ID of member to track work against. Defaults to
+	       current user (int) (optional)
+	 *  - 'work': Hours worked (float) (optional)
+	 *  - 'low': low estimated time (float) (optional)
+	 *  - 'high': high estimated time (float) (optional)
+	 * @return array Response from Liquid Planner
+	 */
+	public function track_time($taskid, array $data)
 	{
 		$encodedTask = json_encode($data);
 		$url = $this->serviceurl.'/tasks/'.$taskid.'/track_time';

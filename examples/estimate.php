@@ -21,6 +21,6 @@ $taskData['high'] = "8h";
 $lp = new LiquidPlanner("12345", "you@example.com", "yourLPpassword");
 
 /* Update the low and high estimated remaining time values */
-$response = $lp->update_estimate($taskID, $taskData);
+$response = $lp->estimate($taskID, $taskData);
 
 exit;
