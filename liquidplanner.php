@@ -99,28 +99,6 @@ class LiquidPlanner
 	{ return array("Not yet implemented"); }
 
 /**************************************************************/
-	/**
-	 *
-	 */
-	private function execute_connection($url, $encodedTask)
-	{
-		//print_r($encodedTask);
-		/* Set up the CURL object and execute it */
-		$conn = curl_init();
-		curl_setopt($conn, CURLOPT_HEADER, FALSE);                                       // Suppress display of the response header
-		curl_setopt($conn, CURLOPT_HTTPHEADER, array("Content-Type: application/json")); // Must submit as JSON
-		curl_setopt($conn, CURLOPT_RETURNTRANSFER, TRUE);                                // Return result as a string
-		curl_setopt($conn, CURLOPT_POST, TRUE);                                          // Submit data as an HTTP POST
-		curl_setopt($conn, CURLOPT_POSTFIELDS, $encodedTask);                            // Set the POST field values
-		curl_setopt($conn, CURLOPT_ENCODING, "");                                        // Prevent GZIP compression of response from LP
-		curl_setopt($conn, CURLOPT_USERPWD, $this->email.":".$this->password);           // Authenticate
-		curl_setopt($conn, CURLOPT_URL, $url);                                           // Set the service URL
-		$response = curl_exec($conn);
-		curl_close($conn);
-
-		/* The response is JSON, so decode it and return the result as an array */
-		return(json_decode($response, TRUE));
-	}
 
 	/**
 	 *
@@ -161,7 +139,6 @@ class LiquidPlanner
 		$response = curl_exec($conn);
 		curl_close($conn);
 
-		/* The response is JSON, so decode it and return the result as an array */
 		return($response);
 	}
 }
