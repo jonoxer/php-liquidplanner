@@ -25,17 +25,9 @@ class LiquidPlanner
 	 * description
 	 * parent_id
 	 */
-	public function create_task(array $task)
+	public function create_task(array $data)
 	{
-		$encodedTask = json_encode(
-			array('task' =>
-				array(
-					'name'        => $task['name'],
-					'description' => $task['description'],
-					'parent_id'   => $task['parent_id']
-				)
-			)
-		);
+		$encodedTask = json_encode(array('task' => $data));
 		$url = $this->serviceurl.'/tasks';
 		$response = $this->lp_post($url, $encodedTask);
 		return($response);
