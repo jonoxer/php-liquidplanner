@@ -1,0 +1,160 @@
+\hypertarget{classLiquidPlanner}{
+\section{LiquidPlanner Class Reference}
+\label{classLiquidPlanner}\index{LiquidPlanner@{LiquidPlanner}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLiquidPlanner_a0d0abee95b7d095d88f080a1f5debcd1}{\_\-\_\-construct} (\$workspaceID, \$email, \$password)
+\item 
+\hyperlink{classLiquidPlanner_a20fb803d7667ba23515ac730b57d3be9}{clients\_\-comments\_\-delete} (\$clientId, \$commentId)
+\item 
+\hyperlink{classLiquidPlanner_a91a8d60f702c9b774e292c734df4f47f}{tasks\_\-create} (array \$data)
+\item 
+\hyperlink{classLiquidPlanner_adb51bedafa48a1945b20a3a546521bb5}{tasks\_\-delete} (\$id)
+\item 
+\hyperlink{classLiquidPlanner_acb040a00fc036f40ada6c04a1f041a8e}{tasks\_\-track\_\-time} (array \$data, \$id)
+\item 
+\hypertarget{classLiquidPlanner_acac28a1520fd8b2111c9c972976f5a15}{
+{\bfseries activities} (array \$data, \$id=NULL)}
+\label{classLiquidPlanner_acac28a1520fd8b2111c9c972976f5a15}
+
+\item 
+\hypertarget{classLiquidPlanner_a5847d38529f21f5490c296b80a041b23}{
+{\bfseries clients} (array \$data)}
+\label{classLiquidPlanner_a5847d38529f21f5490c296b80a041b23}
+
+\item 
+\hypertarget{classLiquidPlanner_a2f4602d4a71e0bd752f907cf5d0ed64d}{
+{\bfseries clients\_\-comments} (array \$data, \$id=NULL)}
+\label{classLiquidPlanner_a2f4602d4a71e0bd752f907cf5d0ed64d}
+
+\item 
+\hypertarget{classLiquidPlanner_a232a622b6339974506a11ec8078aaf26}{
+{\bfseries clients\_\-dependencies} (array \$data, \$id=NULL)}
+\label{classLiquidPlanner_a232a622b6339974506a11ec8078aaf26}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Library to provide simple access to the Liquid Planner API
+
+The public methods are structured to mimic the API routes published by Liquid Planner at \href{https://app.liquidplanner.com/api/help/urls.}{\tt https://app.liquidplanner.com/api/help/urls.} Method names follow the route sequence with the common leading elements generalised away, so for example this API route: api/workspaces/:workspace\_\-id/tasks/:id/track\_\-time is exposed as a public method called: \hyperlink{classLiquidPlanner_acb040a00fc036f40ada6c04a1f041a8e}{tasks\_\-track\_\-time()}
+
+Convenience methods for \char`\"{}create\char`\"{} and \char`\"{}delete\char`\"{} are also provided even though they are implied in the API routes and not explicitly named, so for example to create or delete tasks you can simply call: \hyperlink{classLiquidPlanner_a91a8d60f702c9b774e292c734df4f47f}{tasks\_\-create()} \hyperlink{classLiquidPlanner_adb51bedafa48a1945b20a3a546521bb5}{tasks\_\-delete()}
+
+\begin{DoxyAuthor}{Author}
+Jonathan Oxer $<$\href{mailto:jon.oxer@ivt.com.au}{\tt jon.oxer@ivt.com.au}$>$  2011 Internet Vision Technologies $<$www.ivt.com.au$>$ 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+2011-\/08-\/08 
+\end{DoxyVersion}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classLiquidPlanner_a0d0abee95b7d095d88f080a1f5debcd1}{
+\index{LiquidPlanner@{LiquidPlanner}!\_\-\_\-construct@{\_\-\_\-construct}}
+\index{\_\-\_\-construct@{\_\-\_\-construct}!LiquidPlanner@{LiquidPlanner}}
+\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}LiquidPlanner::\_\-\_\-construct (
+\begin{DoxyParamCaption}
+\item[{\$}]{workspaceID, }
+\item[{\$}]{email, }
+\item[{\$}]{password}
+\end{DoxyParamCaption}
+)}}
+\label{classLiquidPlanner_a0d0abee95b7d095d88f080a1f5debcd1}
+Constructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classLiquidPlanner_a20fb803d7667ba23515ac730b57d3be9}{
+\index{LiquidPlanner@{LiquidPlanner}!clients\_\-comments\_\-delete@{clients\_\-comments\_\-delete}}
+\index{clients\_\-comments\_\-delete@{clients\_\-comments\_\-delete}!LiquidPlanner@{LiquidPlanner}}
+\subsubsection[{clients\_\-comments\_\-delete}]{\setlength{\rightskip}{0pt plus 5cm}LiquidPlanner::clients\_\-comments\_\-delete (
+\begin{DoxyParamCaption}
+\item[{\$}]{clientId, }
+\item[{\$}]{commentId}
+\end{DoxyParamCaption}
+)}}
+\label{classLiquidPlanner_a20fb803d7667ba23515ac730b57d3be9}
+Deletes a comment on a client from Liquid Planner
+
+Pass the ID of a comment in Liquid Planner into this method and it will be deleted from the workspace. The raw response from the web service is returned so you can examine the result.
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$clientId} & the ID of the client in Liquid Planner \\
+\hline
+int & {\em \$commentId} & the ID of the comment in Liquid Planner\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string raw response from the API
+\end{DoxyReturn}
+public \hypertarget{classLiquidPlanner_a91a8d60f702c9b774e292c734df4f47f}{
+\index{LiquidPlanner@{LiquidPlanner}!tasks\_\-create@{tasks\_\-create}}
+\index{tasks\_\-create@{tasks\_\-create}!LiquidPlanner@{LiquidPlanner}}
+\subsubsection[{tasks\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}LiquidPlanner::tasks\_\-create (
+\begin{DoxyParamCaption}
+\item[{array \$}]{data}
+\end{DoxyParamCaption}
+)}}
+\label{classLiquidPlanner_a91a8d60f702c9b774e292c734df4f47f}
+Creates a new task in Liquid Planner
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$data} & values to apply to the newly created task\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array Response from Liquid Planner
+\end{DoxyReturn}
+public \hypertarget{classLiquidPlanner_adb51bedafa48a1945b20a3a546521bb5}{
+\index{LiquidPlanner@{LiquidPlanner}!tasks\_\-delete@{tasks\_\-delete}}
+\index{tasks\_\-delete@{tasks\_\-delete}!LiquidPlanner@{LiquidPlanner}}
+\subsubsection[{tasks\_\-delete}]{\setlength{\rightskip}{0pt plus 5cm}LiquidPlanner::tasks\_\-delete (
+\begin{DoxyParamCaption}
+\item[{\$}]{id}
+\end{DoxyParamCaption}
+)}}
+\label{classLiquidPlanner_adb51bedafa48a1945b20a3a546521bb5}
+Deletes a task from Liquid Planner
+
+Pass the ID of a task in Liquid Planner into this method and it will be deleted from the workspace. The raw response from the web service is returned so you can examine the result.
+
+
+\begin{DoxyParams}[1]{Parameters}
+int & {\em \$id} & the ID of the task in Liquid Planner\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string raw response from the API
+\end{DoxyReturn}
+public \hypertarget{classLiquidPlanner_acb040a00fc036f40ada6c04a1f041a8e}{
+\index{LiquidPlanner@{LiquidPlanner}!tasks\_\-track\_\-time@{tasks\_\-track\_\-time}}
+\index{tasks\_\-track\_\-time@{tasks\_\-track\_\-time}!LiquidPlanner@{LiquidPlanner}}
+\subsubsection[{tasks\_\-track\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}LiquidPlanner::tasks\_\-track\_\-time (
+\begin{DoxyParamCaption}
+\item[{array \$}]{data, }
+\item[{\$}]{id}
+\end{DoxyParamCaption}
+)}}
+\label{classLiquidPlanner_acb040a00fc036f40ada6c04a1f041a8e}
+Updates task time values, such as work completed and estimates
+
+
+\begin{DoxyParams}[1]{Parameters}
+array & {\em \$data} & values to apply to the specified task \\
+\hline
+int & {\em \$taskid} & ID of Liquid Planner task to update\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array Response from Liquid Planner
+\end{DoxyReturn}
+public 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+liquidplanner.php\end{DoxyCompactItemize}
