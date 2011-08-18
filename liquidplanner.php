@@ -38,27 +38,6 @@ class LiquidPlanner
     }
 
     /**
-     * Updates the low and high time estimates for a specifed task.
-     * NOTE: This method currently does not work. Do not use!
-     *
-     * @param array $data Values to apply to the specified task
-     *  - 'low': low estimated time (float)
-     *  - 'high': high estimated time (float)
-     * @param int $taskid ID of Liquid Planner task to update
-     *
-     * @return array  Response from Liquid Planner
-     *
-     * @access public
-     */
-    public function estimate(array $data, $id)
-    {
-        $encodedTask = json_encode($data);
-        $url = $this->serviceurl.'/treeitems/'.$id.'/estimates';
-        $response = $this->lp_post($url, $encodedTask);
-        return($response);
-    }
-
-    /**
      * Updates task time values, such as work completed and estimates
      *
      * @param  array  $data   values to apply to the specified task
