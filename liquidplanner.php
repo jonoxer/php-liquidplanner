@@ -45,7 +45,10 @@ class LiquidPlanner
      *  - 'low': low estimated time (float)
      *  - 'high': high estimated time (float)
      * @param int $taskid ID of Liquid Planner task to update
-     * @return array Response from Liquid Planner
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
      */
     public function estimate(array $data, $id)
     {
@@ -56,11 +59,14 @@ class LiquidPlanner
     }
 
     /**
-     * Updates the time values (both work completed and estimates)
-     * of tasks.
-     * @param array $data Values to apply to the specified task
-     * @param int $taskid ID of Liquid Planner task to update
-     * @return array Response from Liquid Planner
+     * Updates task time values, such as work completed and estimates
+     *
+     * @param  array  $data   values to apply to the specified task
+     * @param  int    $taskid ID of Liquid Planner task to update
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
      */
     public function tasks_track_time(array $data, $id)
     {
@@ -70,12 +76,22 @@ class LiquidPlanner
         return($response);
     }
 
-
-    function tasks_delete($id)
+    /**
+     * Deletes a task from Liquid Planner
+     *
+     * Pass the ID of a task in Liquid Planner into this method and it
+     * will be deleted from the workspace. The raw response from the
+     * web service is returned so you can examine the result.
+     *
+     * @param  int     $id the ID of the task in Liquid Planner
+     *
+     * @return string  raw response from the API
+     *
+     * @access public
+     */
+    public function tasks_delete($id)
     {
-        //$encodedTask = json_encode($data);
         $url = $this->serviceurl.'/tasks/'.$id;
-        //$response = $this->lp_delete($url, $encodedTask);
         $response = $this->lp_delete($url);
         return($response);
     }
