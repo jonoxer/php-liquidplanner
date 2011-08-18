@@ -25,32 +25,18 @@ class LiquidPlanner
     }
 
     /**
-     * $ticket['name']
-     * description
-     * parent_id
-     */
-    public function create_task(array $data)
-    {
-        $encodedTask = json_encode(array('task' => $data));
-        $url = $this->serviceurl.'/tasks';
-        $response = $this->lp_post($url, $encodedTask);
-        return($response);
-    }
-
-    /**
-     * Updates task time values, such as work completed and estimates
+     * Creates a new task in Liquid Planner
      *
-     * @param  array  $data   values to apply to the specified task
-     * @param  int    $taskid ID of Liquid Planner task to update
+     * @param  array  $data   values to apply to the newly created task
      *
      * @return array  Response from Liquid Planner
      *
      * @access public
      */
-    public function tasks_track_time(array $data, $id)
+    public function tasks_create(array $data)
     {
-        $encodedTask = json_encode($data);
-        $url = $this->serviceurl.'/tasks/'.$id.'/track_time';
+        $encodedTask = json_encode(array('task' => $data));
+        $url = $this->serviceurl.'/tasks';
         $response = $this->lp_post($url, $encodedTask);
         return($response);
     }
@@ -72,6 +58,24 @@ class LiquidPlanner
     {
         $url = $this->serviceurl.'/tasks/'.$id;
         $response = $this->lp_delete($url);
+        return($response);
+    }
+
+    /**
+     * Updates task time values, such as work completed and estimates
+     *
+     * @param  array  $data   values to apply to the specified task
+     * @param  int    $taskid ID of Liquid Planner task to update
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function tasks_track_time(array $data, $id)
+    {
+        $encodedTask = json_encode($data);
+        $url = $this->serviceurl.'/tasks/'.$id.'/track_time';
+        $response = $this->lp_post($url, $encodedTask);
         return($response);
     }
 
