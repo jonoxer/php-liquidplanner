@@ -138,10 +138,10 @@ class LiquidPlanner
     {
         /* Set up the CURL object and execute it */
         $conn = curl_init();
-        curl_setopt($conn, CURLOPT_HEADER, FALSE);                                       // Suppress display of the response header
+        curl_setopt($conn, CURLOPT_HEADER, false);                                       // Suppress display of the response header
         curl_setopt($conn, CURLOPT_HTTPHEADER, array("Content-Type: application/json")); // Must submit as JSON
-        curl_setopt($conn, CURLOPT_RETURNTRANSFER, TRUE);                                // Return result as a string
-        curl_setopt($conn, CURLOPT_POST, TRUE);                                          // Submit data as an HTTP POST
+        curl_setopt($conn, CURLOPT_RETURNTRANSFER, true);                                // Return result as a string
+        curl_setopt($conn, CURLOPT_POST, true);                                          // Submit data as an HTTP POST
         curl_setopt($conn, CURLOPT_POSTFIELDS, $encodedTask);                            // Set the POST field values
         curl_setopt($conn, CURLOPT_ENCODING, "");                                        // Prevent GZIP compression of response from LP
         curl_setopt($conn, CURLOPT_USERPWD, $this->email.":".$this->password);           // Authenticate
@@ -150,7 +150,7 @@ class LiquidPlanner
         curl_close($conn);
 
         /* The response is JSON, so decode it and return the result as an array */
-        return(json_decode($response, TRUE));
+        return(json_decode($response, true));
     }
 
     /**
@@ -160,8 +160,8 @@ class LiquidPlanner
     {
         /* Set up the CURL object and execute it */
         $conn = curl_init();
-        curl_setopt($conn, CURLOPT_HEADER, FALSE);                                       // Suppress display of the response header
-        curl_setopt($conn, CURLOPT_RETURNTRANSFER, TRUE);                                // Return result as a string
+        curl_setopt($conn, CURLOPT_HEADER, false);                                       // Suppress display of the response header
+        curl_setopt($conn, CURLOPT_RETURNTRANSFER, true);                                // Return result as a string
         curl_setopt($conn, CURLOPT_CUSTOMREQUEST, "DELETE");                             // Connect as an HTTP DELETE
         curl_setopt($conn, CURLOPT_ENCODING, "");                                        // Prevent GZIP compression of response from LP
         curl_setopt($conn, CURLOPT_USERPWD, $this->email.":".$this->password);           // Authenticate
