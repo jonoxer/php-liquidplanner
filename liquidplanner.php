@@ -3,6 +3,20 @@
 /**
  * Library to provide simple access to the Liquid Planner API
  *
+ * The public methods are structured to mimic the API routes published
+ * by Liquid Planner at https://app.liquidplanner.com/api/help/urls.
+ * Method names follow the route sequence with the common leading
+ * elements generalised away, so for example this API route:
+ *     api/workspaces/:workspace_id/tasks/:id/track_time
+ * is exposed as a public method called:
+ *     tasks_track_time()
+ *
+ * Convenience methods for "create" and "delete" are also provided
+ * even though they are implied in the API routes and not explicitly
+ * named, so for example to create or delete tasks you can simply call:
+ *     tasks_create()
+ *     tasks_delete()
+ *
  * @author     Jonathan Oxer <jon.oxer@ivt.com.au>
  * @copyright  2011 Internet Vision Technologies <www.ivt.com.au>
  * @version    2011-08-08
@@ -22,6 +36,27 @@ class LiquidPlanner
         $this->email      = $email;
         $this->password   = $password;
         $this->serviceurl = "https://app.liquidplanner.com/api/workspaces/".$workspaceID;
+    }
+
+    /**
+     * Deletes a comment on a client from Liquid Planner
+     *
+     * Pass the ID of a comment in Liquid Planner into this method and it
+     * will be deleted from the workspace. The raw response from the
+     * web service is returned so you can examine the result.
+     *
+     * @param  int     $clientId  the ID of the client in Liquid Planner
+     * @param  int     $commentId the ID of the comment in Liquid Planner
+     *
+     * @return string  raw response from the API
+     *
+     * @access public
+     */
+    public function clients_comments_delete($clientId, $commentId)
+    {
+        $url = $this->serviceurl.'/clients/'.$clientId.'/comments/'.$commentId;
+        $response = $this->lp_delete($url);
+        return($response);
     }
 
     /**
@@ -96,11 +131,11 @@ class LiquidPlanner
 /**************************************************************/
 
     /**
-     *
+     * Send data to the Liquid Planner API as a POST method with a
+     * JSON-encoded payload
      */
     private function lp_post($url, $encodedTask)
     {
-        //print_r($encodedTask);
         /* Set up the CURL object and execute it */
         $conn = curl_init();
         curl_setopt($conn, CURLOPT_HEADER, FALSE);                                       // Suppress display of the response header
@@ -119,7 +154,7 @@ class LiquidPlanner
     }
 
     /**
-     *
+     * Send data to the Liquid Planner API as a DELETE method
      */
     private function lp_delete($url)
     {
