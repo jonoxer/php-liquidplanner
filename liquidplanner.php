@@ -106,11 +106,29 @@ class LiquidPlanner
      *
      * @access public
      */
-    public function tasks_track_time(array $data, $id)
+    public function tasks_track_time(array $data, $taskid)
     {
         $encodedTask = json_encode($data);
-        $url = $this->serviceurl.'/tasks/'.$id.'/track_time';
+        $url = $this->serviceurl.'/tasks/'.$taskid.'/track_time';
         $response = $this->lp_post($url, $encodedTask);
+        return($response);
+    }
+
+    /**
+     * Creates a new comment on a task in Liquid Planner
+     *
+     * @param  array  $data   values to apply to the newly created comment
+     * @param  int    $taskid ID of Liquid Planner task to link to comment
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function tasks_comments_create(array $data, $taskid)
+    {
+        $encodedData = json_encode(array('comment' => $data));
+        $url = $this->serviceurl.'/tasks/'.$taskid.'/comments';
+        $response = $this->lp_post($url, $encodedData);
         return($response);
     }
 
