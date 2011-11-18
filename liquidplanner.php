@@ -131,16 +131,42 @@ class LiquidPlanner
         $response = $this->lp_post($url, $encodedData);
         return($response);
     }
+	
+	/**
+     * Gets a list of clients from Liquid Planner
+     *
+     * @param  int    $clientid ID of Liquid Planner client to get 
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+	function clients($clientid=NULL)
+    { 
+		$url = $this->serviceurl.'/clients'.($clientid ? '/'.$clientid : '');
+		return $this->lp_get($url);
+	}
+
+	/**
+     * Gets a list of comments on a client from Liquid Planner
+     *
+     * @param  int    $clientid ID of Liquid Planner client to get comments from 
+     * @param  int    $commentid ID of Liquid Planner client comment to get 
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    function clients_comments($clientid=NULL, $commentid=NULL)
+    { 
+		$url = $this->serviceurl.'/clients/'.$clientid.'/comments'.($commentid ? '/'.$commentid : '');
+		echo $url;
+		return $this->lp_get($url);
+	}
 
 /**************************************************************/
 
     function activities(array $data, $id=NULL)
-    { return array("Not yet implemented"); }
-
-    function clients(array $data)
-    { return array("Not yet implemented"); }
-
-    function clients_comments(array $data, $id=NULL)
     { return array("Not yet implemented"); }
 
     function clients_dependencies(array $data, $id=NULL)
@@ -165,6 +191,25 @@ class LiquidPlanner
         curl_setopt($conn, CURLOPT_USERPWD, $this->email.":".$this->password);           // Authenticate
         curl_setopt($conn, CURLOPT_URL, $url);                                           // Set the service URL
         curl_setopt($conn, CURLOPT_SSL_VERIFYPEER, false);                               // Accept any SSL certificate
+        $response = curl_exec($conn);
+        curl_close($conn);
+
+        /* The response is JSON, so decode it and return the result as an array */
+        return(json_decode($response, true));
+    }
+	
+	 /**
+     * Send data to the Liquid Planner API as a GET method
+     */
+	private function lp_get($url)
+    {
+        /* Set up the CURL object and execute it */
+        $conn = curl_init();
+        curl_setopt($conn, CURLOPT_HEADER, false);                                       // Suppress display of the response header
+        curl_setopt($conn, CURLOPT_RETURNTRANSFER, true);                                // Return result as a string
+        curl_setopt($conn, CURLOPT_ENCODING, "");                                        // Prevent GZIP compression of response from LP
+        curl_setopt($conn, CURLOPT_USERPWD, $this->email.":".$this->password);           // Authenticate
+        curl_setopt($conn, CURLOPT_URL, $url);                                           // Set the service URL
         $response = curl_exec($conn);
         curl_close($conn);
 
