@@ -164,6 +164,7 @@ class LiquidPlanner
         curl_setopt($conn, CURLOPT_ENCODING, "");                                        // Prevent GZIP compression of response from LP
         curl_setopt($conn, CURLOPT_USERPWD, $this->email.":".$this->password);           // Authenticate
         curl_setopt($conn, CURLOPT_URL, $url);                                           // Set the service URL
+        curl_setopt($conn, CURLOPT_SSL_VERIFYPEER, false);                               // Accept any SSL certificate
         $response = curl_exec($conn);
         curl_close($conn);
 
@@ -184,6 +185,7 @@ class LiquidPlanner
         curl_setopt($conn, CURLOPT_ENCODING, "");                                        // Prevent GZIP compression of response from LP
         curl_setopt($conn, CURLOPT_USERPWD, $this->email.":".$this->password);           // Authenticate
         curl_setopt($conn, CURLOPT_URL, $url);                                           // Set the service URL
+        curl_setopt($conn, CURLOPT_SSL_VERIFYPEER, false);                               // Accept any SSL certificate
         $response = curl_exec($conn);
         curl_close($conn);
 
