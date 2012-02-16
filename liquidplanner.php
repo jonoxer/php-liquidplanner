@@ -35,7 +35,8 @@ class LiquidPlanner
     {
         $this->email      = $email;
         $this->password   = $password;
-        $this->serviceurl = "https://app.liquidplanner.com/api/workspaces/".$workspaceID;
+        $this->baseurl	  = "https://app.liquidplanner.com/api";
+        $this->serviceurl = $this->baseurl . "/workspaces/".$workspaceID;
     }
 
     /**
@@ -130,6 +131,20 @@ class LiquidPlanner
         $url = $this->serviceurl.'/tasks/'.$taskid.'/comments';
         $response = $this->lp_post($url, $encodedData);
         return($response);
+    }
+    
+    /**
+     * Retrieves the logged in user's account information.
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function account()
+    {
+        $url = $this->baseurl.'/account';
+        $response = $this->lp_post($url, "");
+        return($response);    
     }
 
 /**************************************************************/
