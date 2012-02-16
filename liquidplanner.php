@@ -143,12 +143,14 @@ class LiquidPlanner
     public function account()
     {
         $url = $this->baseurl.'/account';
-        $response = $this->lp_post($url, "");
+        $response = $this->lp_get($url);
         return($response);    
     }
 
     /**
-     * Retrieves the logged in user's account information.
+     * Retrieves the specified client or a list of clients
+     *
+     * @param  int    $clientid ID of client.
      *
      * @return array  Response from Liquid Planner
      *
@@ -201,12 +203,69 @@ class LiquidPlanner
         return $this->lp_get($url);
     }
 
+    /**
+     * Retrieves all members in Liquid Planner
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function members()
+    {
+        $url = $this->serviceurl.'/members';
+        $response = $this->lp_get($url);
+        return($response);
+    }
+
+    /**
+     * Creates a new project in Liquid Planner
+     *
+     * @param  string  $name          name of this project
+     * @param  int	   $client_id     client ID associated with project
+     * @param  int	   $parent_id     parent ID associated with project
+     * @param  string  $description   plain-text description of the project
+     * @param  bool    $is_done       whether the project is done or not
+     * @param  string  $done_on       date the project was done on
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function projects_create($name, $client_id, $parent_id, $description = '', $is_done = false, $done_on = '')
+    {
+        $encodedClient = json_encode(array('project' => array(
+        	'name' => $name, 
+        	'client_id' => $client_id,
+        	'parent_id' => $parent_id,
+        	'description' => $description,
+        	'is_done' => $is_done,
+        	'done_on' => $done_on
+        )));
+        $url = $this->serviceurl.'/projects';
+        $response = $this->lp_post($url, $encodedClient);
+        return($response);
+    }
+
+    /**
+     * Retrieves the specified project or a list of projects
+     *
+     * @param  int    $projectid ID of project
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function projects($projectid=NULL)
+    { 
+		$url = $this->serviceurl.'/projects'.($projectid ? '/'.$projectid : '');
+        $response = $this->lp_get($url);
+        return($response);    
+    }
+
+
 /**************************************************************/
 
     function activities(array $data, $id=NULL)
-    { return array("Not yet implemented"); }
-
-    function clients_comments(array $data, $id=NULL)
     { return array("Not yet implemented"); }
 
     function clients_dependencies(array $data, $id=NULL)
