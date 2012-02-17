@@ -226,12 +226,13 @@ class LiquidPlanner
      * @param  string  $description   plain-text description of the project
      * @param  bool    $is_done       whether the project is done or not
      * @param  string  $done_on       date the project was done on
+     * @param  string  $external_reference       
      *
      * @return array  Response from Liquid Planner
      *
      * @access public
      */
-    public function projects_create($name, $client_id, $parent_id, $description = '', $is_done = false, $done_on = '')
+    public function projects_create($name, $client_id, $parent_id, $description = '', $is_done = false, $done_on = '', $external_reference = '')
     {
         $encodedClient = json_encode(array('project' => array(
         	'name' => $name, 
@@ -239,7 +240,8 @@ class LiquidPlanner
         	'parent_id' => $parent_id,
         	'description' => $description,
         	'is_done' => $is_done,
-        	'done_on' => $done_on
+        	'done_on' => $done_on,
+        	'external_reference' => $external_reference
         )));
         $url = $this->serviceurl.'/projects';
         $response = $this->lp_post($url, $encodedClient);
