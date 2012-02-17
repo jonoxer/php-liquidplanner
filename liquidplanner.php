@@ -27,6 +27,8 @@ class LiquidPlanner
     private $email = '';
     private $password = '';
     private $serviceurl = '';
+    private $throttlewait = 15;
+    public  $debug = false;
 
     /**
      * Constructor
@@ -296,7 +298,18 @@ class LiquidPlanner
         curl_close($conn);
 
         /* The response is JSON, so decode it and return the result as an array */
-        return(json_decode($response, true));
+        $results = json_decode($response, true);
+        
+        /* Check for Throttling from the API */
+        if((isset($results['type']) && $results['type'] == "Error") || (isset($results['error']) && $results['error'] == "Throttled"))
+        {
+        	//We're being throttled. Waith 15 seconds and call it again.
+			$this->throttle_message();
+			sleep($this->throttlewait);
+        	return $this->lp_post($url, $encodedTask);
+        }
+        
+        return $results;
     }
 	
 	 /**
@@ -318,7 +331,18 @@ class LiquidPlanner
         curl_close($conn);
 
         /* The response is JSON, so decode it and return the result as an array */
-        return(json_decode($response, true));
+        $results = json_decode($response, true);
+        
+        /* Check for Throttling from the API */
+        if((isset($results['type']) && $results['type'] == "Error") || (isset($results['error']) && $results['error'] == "Throttled"))
+        {
+        	//We're being throttled. Waith 15 seconds and call it again.
+			$this->throttle_message();
+			sleep($this->throttlewait);
+        	return $this->lp_get($url);
+        }
+        
+        return $results;
     }
 
     /**
@@ -338,6 +362,32 @@ class LiquidPlanner
         $response = curl_exec($conn);
         curl_close($conn);
 
-        return($response);
+        $results = json_decode($response, true);
+        
+        /* Check for Throttling from the API */
+        if((isset($results['type']) && $results['type'] == "Error") || (isset($results['error']) && $results['error'] == "Throttled"))
+        {
+        	//We're being throttled. Waith 15 seconds and call it again.
+			$this->throttle_message();
+			sleep($this->throttlewait);
+        	return $this->lp_delete($url);
+        }
+        
+        return $results;
+    }
+    
+    private function throttle_message()
+    {
+		if($this->debug === true)
+		{
+			echo '<p class="throttled">API Throttling in effect. Waiting ' . $this->throttlewait . ' seconds before trying again.</p>';
+
+			/* Clear the output buffer if it's turned on. */
+			if(ob_get_level() !== 0)
+			{
+		        ob_flush();
+		        flush();
+			}
+		}
     }
 }
