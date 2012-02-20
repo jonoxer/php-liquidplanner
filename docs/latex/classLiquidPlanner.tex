@@ -1,160 +1,349 @@
-\hypertarget{classLiquidPlanner}{
-\section{LiquidPlanner Class Reference}
-\label{classLiquidPlanner}\index{LiquidPlanner@{LiquidPlanner}}
+\hypertarget{classLiquidPlanner}{\section{\-Liquid\-Planner \-Class \-Reference}
+\label{classLiquidPlanner}\index{\-Liquid\-Planner@{\-Liquid\-Planner}}
 }
-\subsection*{Public Member Functions}
+\subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classLiquidPlanner_a0d0abee95b7d095d88f080a1f5debcd1}{\_\-\_\-construct} (\$workspaceID, \$email, \$password)
+\hyperlink{classLiquidPlanner_a0d0abee95b7d095d88f080a1f5debcd1}{\-\_\-\-\_\-construct} (\$workspace\-I\-D, \$email, \$password)
 \item 
-\hyperlink{classLiquidPlanner_a20fb803d7667ba23515ac730b57d3be9}{clients\_\-comments\_\-delete} (\$clientId, \$commentId)
+\hyperlink{classLiquidPlanner_a20fb803d7667ba23515ac730b57d3be9}{clients\-\_\-comments\-\_\-delete} (\$client\-Id, \$comment\-Id)
 \item 
-\hyperlink{classLiquidPlanner_a91a8d60f702c9b774e292c734df4f47f}{tasks\_\-create} (array \$data)
+\hyperlink{classLiquidPlanner_a058203506b65fab8abc2691d4a73bcb6}{tasks} (\$taskid=\-N\-U\-L\-L)
 \item 
-\hyperlink{classLiquidPlanner_adb51bedafa48a1945b20a3a546521bb5}{tasks\_\-delete} (\$id)
+\hyperlink{classLiquidPlanner_a91a8d60f702c9b774e292c734df4f47f}{tasks\-\_\-create} (array \$data)
 \item 
-\hyperlink{classLiquidPlanner_acb040a00fc036f40ada6c04a1f041a8e}{tasks\_\-track\_\-time} (array \$data, \$id)
+\hyperlink{classLiquidPlanner_adb51bedafa48a1945b20a3a546521bb5}{tasks\-\_\-delete} (\$id)
 \item 
-\hypertarget{classLiquidPlanner_acac28a1520fd8b2111c9c972976f5a15}{
-{\bfseries activities} (array \$data, \$id=NULL)}
-\label{classLiquidPlanner_acac28a1520fd8b2111c9c972976f5a15}
+\hyperlink{classLiquidPlanner_afaddde49d5ccb8388bc811cbd24bafd9}{tasks\-\_\-track\-\_\-time} (array \$data, \$taskid)
+\item 
+\hyperlink{classLiquidPlanner_a231945dadafba5268ec7b1a4305a650b}{tasks\-\_\-comments\-\_\-create} (array \$data, \$taskid)
+\item 
+\hyperlink{classLiquidPlanner_ad17b0c0897ccfd57b3711f575c71ac52}{account} ()
+\item 
+\hyperlink{classLiquidPlanner_a578c0b5f4bebd4b6d5bd9fa4094f47ef}{workspace} ()
+\item 
+\hyperlink{classLiquidPlanner_ad24127489529c593f1ce237754a47861}{clients} (\$clientid=\-N\-U\-L\-L)
+\item 
+\hyperlink{classLiquidPlanner_a92c8865b143ee7a75c315a0b0d3ed5bd}{clients\-\_\-create} (\$name, \$description= '', \$external\-\_\-ref= '')
+\item 
+\hyperlink{classLiquidPlanner_ab285c107c686d95f320b1136a37ce9e5}{clients\-\_\-comments} (\$clientid=\-N\-U\-L\-L, \$commentid=\-N\-U\-L\-L)
+\item 
+\hyperlink{classLiquidPlanner_a4949a453567ac21183db806e626beb48}{members} ()
+\item 
+\hyperlink{classLiquidPlanner_a16bef00a1fb8c0fa59581925dce9aeb0}{projects\-\_\-create} (\$name, \$client\-\_\-id, \$parent\-\_\-id, \$description= '', \$is\-\_\-done=false, \$done\-\_\-on= '', \$external\-\_\-reference= '')
+\item 
+\hyperlink{classLiquidPlanner_a4db0ff8eca9cdb5dc17cb09ffae056b2}{projects} (\$projectid=\-N\-U\-L\-L)
+\item 
+\hypertarget{classLiquidPlanner_acac28a1520fd8b2111c9c972976f5a15}{{\bfseries activities} (array \$data, \$id=\-N\-U\-L\-L)}\label{classLiquidPlanner_acac28a1520fd8b2111c9c972976f5a15}
 
 \item 
-\hypertarget{classLiquidPlanner_a5847d38529f21f5490c296b80a041b23}{
-{\bfseries clients} (array \$data)}
-\label{classLiquidPlanner_a5847d38529f21f5490c296b80a041b23}
+\hypertarget{classLiquidPlanner_a232a622b6339974506a11ec8078aaf26}{{\bfseries clients\-\_\-dependencies} (array \$data, \$id=\-N\-U\-L\-L)}\label{classLiquidPlanner_a232a622b6339974506a11ec8078aaf26}
 
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Attributes}
+\begin{DoxyCompactItemize}
 \item 
-\hypertarget{classLiquidPlanner_a2f4602d4a71e0bd752f907cf5d0ed64d}{
-{\bfseries clients\_\-comments} (array \$data, \$id=NULL)}
-\label{classLiquidPlanner_a2f4602d4a71e0bd752f907cf5d0ed64d}
-
-\item 
-\hypertarget{classLiquidPlanner_a232a622b6339974506a11ec8078aaf26}{
-{\bfseries clients\_\-dependencies} (array \$data, \$id=NULL)}
-\label{classLiquidPlanner_a232a622b6339974506a11ec8078aaf26}
+\hypertarget{classLiquidPlanner_a8eb5aea2649614e74eb5fcbfafc577b5}{{\bfseries \$debug} = false}\label{classLiquidPlanner_a8eb5aea2649614e74eb5fcbfafc577b5}
 
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
-Library to provide simple access to the Liquid Planner API
+\subsection{\-Detailed \-Description}
+\-Library to provide simple access to the \-Liquid \-Planner \-A\-P\-I
 
-The public methods are structured to mimic the API routes published by Liquid Planner at \href{https://app.liquidplanner.com/api/help/urls.}{\tt https://app.liquidplanner.com/api/help/urls.} Method names follow the route sequence with the common leading elements generalised away, so for example this API route: api/workspaces/:workspace\_\-id/tasks/:id/track\_\-time is exposed as a public method called: \hyperlink{classLiquidPlanner_acb040a00fc036f40ada6c04a1f041a8e}{tasks\_\-track\_\-time()}
+\-The public methods are structured to mimic the \-A\-P\-I routes published by \-Liquid \-Planner at \href{https://app.liquidplanner.com/api/help/urls}{\tt https\-://app.\-liquidplanner.\-com/api/help/urls}. \-Method names follow the route sequence with the common leading elements generalised away, so for example this \-A\-P\-I route\-: api/workspaces/\-:workspace\-\_\-id/tasks/\-:id/track\-\_\-time is exposed as a public method called\-: \hyperlink{classLiquidPlanner_afaddde49d5ccb8388bc811cbd24bafd9}{tasks\-\_\-track\-\_\-time()}
 
-Convenience methods for \char`\"{}create\char`\"{} and \char`\"{}delete\char`\"{} are also provided even though they are implied in the API routes and not explicitly named, so for example to create or delete tasks you can simply call: \hyperlink{classLiquidPlanner_a91a8d60f702c9b774e292c734df4f47f}{tasks\_\-create()} \hyperlink{classLiquidPlanner_adb51bedafa48a1945b20a3a546521bb5}{tasks\_\-delete()}
+\-Convenience methods for \char`\"{}create\char`\"{} and \char`\"{}delete\char`\"{} are also provided even though they are implied in the \-A\-P\-I routes and not explicitly named, so for example to create or delete tasks you can simply call\-: \hyperlink{classLiquidPlanner_a91a8d60f702c9b774e292c734df4f47f}{tasks\-\_\-create()} \hyperlink{classLiquidPlanner_adb51bedafa48a1945b20a3a546521bb5}{tasks\-\_\-delete()}
 
-\begin{DoxyAuthor}{Author}
-Jonathan Oxer $<$\href{mailto:jon.oxer@ivt.com.au}{\tt jon.oxer@ivt.com.au}$>$  2011 Internet Vision Technologies $<$www.ivt.com.au$>$ 
+\begin{DoxyAuthor}{\-Author}
+\-Jonathan \-Oxer $<$\href{mailto:jon.oxer@ivt.com.au}{\tt jon.\-oxer@ivt.\-com.\-au}$>$ 
 \end{DoxyAuthor}
-\begin{DoxyVersion}{Version}
+\begin{DoxyCopyright}{\-Copyright}
+2011 \-Internet \-Vision \-Technologies $<$www.\-ivt.\-com.\-au$>$ 
+\end{DoxyCopyright}
+\begin{DoxyVersion}{\-Version}
 2011-\/08-\/08 
 \end{DoxyVersion}
 
 
-\subsection{Constructor \& Destructor Documentation}
-\hypertarget{classLiquidPlanner_a0d0abee95b7d095d88f080a1f5debcd1}{
-\index{LiquidPlanner@{LiquidPlanner}!\_\-\_\-construct@{\_\-\_\-construct}}
-\index{\_\-\_\-construct@{\_\-\_\-construct}!LiquidPlanner@{LiquidPlanner}}
-\subsubsection[{\_\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}LiquidPlanner::\_\-\_\-construct (
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classLiquidPlanner_a0d0abee95b7d095d88f080a1f5debcd1}{\index{\-Liquid\-Planner@{\-Liquid\-Planner}!\-\_\-\-\_\-construct@{\-\_\-\-\_\-construct}}
+\index{\-\_\-\-\_\-construct@{\-\_\-\-\_\-construct}!LiquidPlanner@{\-Liquid\-Planner}}
+\subsubsection[{\-\_\-\-\_\-construct}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Liquid\-Planner\-::\-\_\-\-\_\-construct} (
 \begin{DoxyParamCaption}
-\item[{\$}]{workspaceID, }
+\item[{\$}]{workspace\-I\-D, }
 \item[{\$}]{email, }
 \item[{\$}]{password}
 \end{DoxyParamCaption}
-)}}
-\label{classLiquidPlanner_a0d0abee95b7d095d88f080a1f5debcd1}
-Constructor 
+)}}\label{classLiquidPlanner_a0d0abee95b7d095d88f080a1f5debcd1}
+\-Constructor 
 
-\subsection{Member Function Documentation}
-\hypertarget{classLiquidPlanner_a20fb803d7667ba23515ac730b57d3be9}{
-\index{LiquidPlanner@{LiquidPlanner}!clients\_\-comments\_\-delete@{clients\_\-comments\_\-delete}}
-\index{clients\_\-comments\_\-delete@{clients\_\-comments\_\-delete}!LiquidPlanner@{LiquidPlanner}}
-\subsubsection[{clients\_\-comments\_\-delete}]{\setlength{\rightskip}{0pt plus 5cm}LiquidPlanner::clients\_\-comments\_\-delete (
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classLiquidPlanner_ad17b0c0897ccfd57b3711f575c71ac52}{\index{\-Liquid\-Planner@{\-Liquid\-Planner}!account@{account}}
+\index{account@{account}!LiquidPlanner@{\-Liquid\-Planner}}
+\subsubsection[{account}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Liquid\-Planner\-::account} (
 \begin{DoxyParamCaption}
-\item[{\$}]{clientId, }
-\item[{\$}]{commentId}
+{}
 \end{DoxyParamCaption}
-)}}
-\label{classLiquidPlanner_a20fb803d7667ba23515ac730b57d3be9}
-Deletes a comment on a client from Liquid Planner
+)}}\label{classLiquidPlanner_ad17b0c0897ccfd57b3711f575c71ac52}
+\-Retrieves the logged in user's account information.
 
-Pass the ID of a comment in Liquid Planner into this method and it will be deleted from the workspace. The raw response from the web service is returned so you can examine the result.
+\begin{DoxyReturn}{\-Returns}
+array \-Response from \-Liquid \-Planner
+\end{DoxyReturn}
+public \hypertarget{classLiquidPlanner_ad24127489529c593f1ce237754a47861}{\index{\-Liquid\-Planner@{\-Liquid\-Planner}!clients@{clients}}
+\index{clients@{clients}!LiquidPlanner@{\-Liquid\-Planner}}
+\subsubsection[{clients}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Liquid\-Planner\-::clients} (
+\begin{DoxyParamCaption}
+\item[{\$}]{clientid = {\ttfamily \-N\-U\-L\-L}}
+\end{DoxyParamCaption}
+)}}\label{classLiquidPlanner_ad24127489529c593f1ce237754a47861}
+\-Retrieves the specified client or a list of clients
 
 
-\begin{DoxyParams}[1]{Parameters}
-int & {\em \$clientId} & the ID of the client in Liquid Planner \\
-\hline
-int & {\em \$commentId} & the ID of the comment in Liquid Planner\\
+\begin{DoxyParams}[1]{\-Parameters}
+int & {\em \$clientid} & \-I\-D of client.\\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-string raw response from the API
+\begin{DoxyReturn}{\-Returns}
+array \-Response from \-Liquid \-Planner
 \end{DoxyReturn}
-public \hypertarget{classLiquidPlanner_a91a8d60f702c9b774e292c734df4f47f}{
-\index{LiquidPlanner@{LiquidPlanner}!tasks\_\-create@{tasks\_\-create}}
-\index{tasks\_\-create@{tasks\_\-create}!LiquidPlanner@{LiquidPlanner}}
-\subsubsection[{tasks\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}LiquidPlanner::tasks\_\-create (
+public \hypertarget{classLiquidPlanner_ab285c107c686d95f320b1136a37ce9e5}{\index{\-Liquid\-Planner@{\-Liquid\-Planner}!clients\-\_\-comments@{clients\-\_\-comments}}
+\index{clients\-\_\-comments@{clients\-\_\-comments}!LiquidPlanner@{\-Liquid\-Planner}}
+\subsubsection[{clients\-\_\-comments}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Liquid\-Planner\-::clients\-\_\-comments} (
+\begin{DoxyParamCaption}
+\item[{\$}]{clientid = {\ttfamily \-N\-U\-L\-L}, }
+\item[{\$}]{commentid = {\ttfamily \-N\-U\-L\-L}}
+\end{DoxyParamCaption}
+)}}\label{classLiquidPlanner_ab285c107c686d95f320b1136a37ce9e5}
+\-Gets a list of comments on a client from \-Liquid \-Planner
+
+
+\begin{DoxyParams}[1]{\-Parameters}
+int & {\em \$clientid} & \-I\-D of \-Liquid \-Planner client to get comments from \\
+\hline
+int & {\em \$commentid} & \-I\-D of \-Liquid \-Planner client comment to get\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+array \-Response from \-Liquid \-Planner
+\end{DoxyReturn}
+public \hypertarget{classLiquidPlanner_a20fb803d7667ba23515ac730b57d3be9}{\index{\-Liquid\-Planner@{\-Liquid\-Planner}!clients\-\_\-comments\-\_\-delete@{clients\-\_\-comments\-\_\-delete}}
+\index{clients\-\_\-comments\-\_\-delete@{clients\-\_\-comments\-\_\-delete}!LiquidPlanner@{\-Liquid\-Planner}}
+\subsubsection[{clients\-\_\-comments\-\_\-delete}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Liquid\-Planner\-::clients\-\_\-comments\-\_\-delete} (
+\begin{DoxyParamCaption}
+\item[{\$}]{client\-Id, }
+\item[{\$}]{comment\-Id}
+\end{DoxyParamCaption}
+)}}\label{classLiquidPlanner_a20fb803d7667ba23515ac730b57d3be9}
+\-Deletes a comment on a client from \-Liquid \-Planner
+
+\-Pass the \-I\-D of a comment in \-Liquid \-Planner into this method and it will be deleted from the workspace. \-The raw response from the web service is returned so you can examine the result.
+
+
+\begin{DoxyParams}[1]{\-Parameters}
+int & {\em \$client\-Id} & the \-I\-D of the client in \-Liquid \-Planner \\
+\hline
+int & {\em \$comment\-Id} & the \-I\-D of the comment in \-Liquid \-Planner\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+string raw response from the \-A\-P\-I
+\end{DoxyReturn}
+public \hypertarget{classLiquidPlanner_a92c8865b143ee7a75c315a0b0d3ed5bd}{\index{\-Liquid\-Planner@{\-Liquid\-Planner}!clients\-\_\-create@{clients\-\_\-create}}
+\index{clients\-\_\-create@{clients\-\_\-create}!LiquidPlanner@{\-Liquid\-Planner}}
+\subsubsection[{clients\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Liquid\-Planner\-::clients\-\_\-create} (
+\begin{DoxyParamCaption}
+\item[{\$}]{name, }
+\item[{\$}]{description = {\ttfamily ''}, }
+\item[{\$}]{external\-\_\-ref = {\ttfamily ''}}
+\end{DoxyParamCaption}
+)}}\label{classLiquidPlanner_a92c8865b143ee7a75c315a0b0d3ed5bd}
+\-Creates a new client in \-Liquid \-Planner
+
+
+\begin{DoxyParams}[1]{\-Parameters}
+string & {\em \$name} & name of this client \\
+\hline
+string & {\em \$description} & plain-\/text description of the client \\
+\hline
+string & {\em \$external\-\_\-ref} & arbitrary string; use e.\-g. to store a reference \-I\-D from an external system\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+array \-Response from \-Liquid \-Planner
+\end{DoxyReturn}
+public \hypertarget{classLiquidPlanner_a4949a453567ac21183db806e626beb48}{\index{\-Liquid\-Planner@{\-Liquid\-Planner}!members@{members}}
+\index{members@{members}!LiquidPlanner@{\-Liquid\-Planner}}
+\subsubsection[{members}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Liquid\-Planner\-::members} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLiquidPlanner_a4949a453567ac21183db806e626beb48}
+\-Retrieves all members in \-Liquid \-Planner
+
+\begin{DoxyReturn}{\-Returns}
+array \-Response from \-Liquid \-Planner
+\end{DoxyReturn}
+public \hypertarget{classLiquidPlanner_a4db0ff8eca9cdb5dc17cb09ffae056b2}{\index{\-Liquid\-Planner@{\-Liquid\-Planner}!projects@{projects}}
+\index{projects@{projects}!LiquidPlanner@{\-Liquid\-Planner}}
+\subsubsection[{projects}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Liquid\-Planner\-::projects} (
+\begin{DoxyParamCaption}
+\item[{\$}]{projectid = {\ttfamily \-N\-U\-L\-L}}
+\end{DoxyParamCaption}
+)}}\label{classLiquidPlanner_a4db0ff8eca9cdb5dc17cb09ffae056b2}
+\-Retrieves the specified project or a list of projects
+
+
+\begin{DoxyParams}[1]{\-Parameters}
+int & {\em \$projectid} & \-I\-D of project\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+array \-Response from \-Liquid \-Planner
+\end{DoxyReturn}
+public \hypertarget{classLiquidPlanner_a16bef00a1fb8c0fa59581925dce9aeb0}{\index{\-Liquid\-Planner@{\-Liquid\-Planner}!projects\-\_\-create@{projects\-\_\-create}}
+\index{projects\-\_\-create@{projects\-\_\-create}!LiquidPlanner@{\-Liquid\-Planner}}
+\subsubsection[{projects\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Liquid\-Planner\-::projects\-\_\-create} (
+\begin{DoxyParamCaption}
+\item[{\$}]{name, }
+\item[{\$}]{client\-\_\-id, }
+\item[{\$}]{parent\-\_\-id, }
+\item[{\$}]{description = {\ttfamily ''}, }
+\item[{\$}]{is\-\_\-done = {\ttfamily false}, }
+\item[{\$}]{done\-\_\-on = {\ttfamily ''}, }
+\item[{\$}]{external\-\_\-reference = {\ttfamily ''}}
+\end{DoxyParamCaption}
+)}}\label{classLiquidPlanner_a16bef00a1fb8c0fa59581925dce9aeb0}
+\-Creates a new project in \-Liquid \-Planner
+
+
+\begin{DoxyParams}[1]{\-Parameters}
+string & {\em \$name} & name of this project \\
+\hline
+int & {\em \$client\-\_\-id} & client \-I\-D associated with project \\
+\hline
+int & {\em \$parent\-\_\-id} & parent \-I\-D associated with project \\
+\hline
+string & {\em \$description} & plain-\/text description of the project \\
+\hline
+bool & {\em \$is\-\_\-done} & whether the project is done or not \\
+\hline
+string & {\em \$done\-\_\-on} & date the project was done on \\
+\hline
+string & {\em \$external\-\_\-reference} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+array \-Response from \-Liquid \-Planner
+\end{DoxyReturn}
+public \hypertarget{classLiquidPlanner_a058203506b65fab8abc2691d4a73bcb6}{\index{\-Liquid\-Planner@{\-Liquid\-Planner}!tasks@{tasks}}
+\index{tasks@{tasks}!LiquidPlanner@{\-Liquid\-Planner}}
+\subsubsection[{tasks}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Liquid\-Planner\-::tasks} (
+\begin{DoxyParamCaption}
+\item[{\$}]{taskid = {\ttfamily \-N\-U\-L\-L}}
+\end{DoxyParamCaption}
+)}}\label{classLiquidPlanner_a058203506b65fab8abc2691d4a73bcb6}
+\-Retrieves the specified task or a list of all tasks
+
+
+\begin{DoxyParams}[1]{\-Parameters}
+int & {\em \$taskid} & \-I\-D of task.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+array \-Response from \-Liquid \-Planner
+\end{DoxyReturn}
+public \hypertarget{classLiquidPlanner_a231945dadafba5268ec7b1a4305a650b}{\index{\-Liquid\-Planner@{\-Liquid\-Planner}!tasks\-\_\-comments\-\_\-create@{tasks\-\_\-comments\-\_\-create}}
+\index{tasks\-\_\-comments\-\_\-create@{tasks\-\_\-comments\-\_\-create}!LiquidPlanner@{\-Liquid\-Planner}}
+\subsubsection[{tasks\-\_\-comments\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Liquid\-Planner\-::tasks\-\_\-comments\-\_\-create} (
+\begin{DoxyParamCaption}
+\item[{array \$}]{data, }
+\item[{\$}]{taskid}
+\end{DoxyParamCaption}
+)}}\label{classLiquidPlanner_a231945dadafba5268ec7b1a4305a650b}
+\-Creates a new comment on a task in \-Liquid \-Planner
+
+
+\begin{DoxyParams}[1]{\-Parameters}
+array & {\em \$data} & values to apply to the newly created comment \\
+\hline
+int & {\em \$taskid} & \-I\-D of \-Liquid \-Planner task to link to comment\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+array \-Response from \-Liquid \-Planner
+\end{DoxyReturn}
+public \hypertarget{classLiquidPlanner_a91a8d60f702c9b774e292c734df4f47f}{\index{\-Liquid\-Planner@{\-Liquid\-Planner}!tasks\-\_\-create@{tasks\-\_\-create}}
+\index{tasks\-\_\-create@{tasks\-\_\-create}!LiquidPlanner@{\-Liquid\-Planner}}
+\subsubsection[{tasks\-\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Liquid\-Planner\-::tasks\-\_\-create} (
 \begin{DoxyParamCaption}
 \item[{array \$}]{data}
 \end{DoxyParamCaption}
-)}}
-\label{classLiquidPlanner_a91a8d60f702c9b774e292c734df4f47f}
-Creates a new task in Liquid Planner
+)}}\label{classLiquidPlanner_a91a8d60f702c9b774e292c734df4f47f}
+\-Creates a new task in \-Liquid \-Planner
 
 
-\begin{DoxyParams}[1]{Parameters}
+\begin{DoxyParams}[1]{\-Parameters}
 array & {\em \$data} & values to apply to the newly created task\\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-array Response from Liquid Planner
+\begin{DoxyReturn}{\-Returns}
+array \-Response from \-Liquid \-Planner
 \end{DoxyReturn}
-public \hypertarget{classLiquidPlanner_adb51bedafa48a1945b20a3a546521bb5}{
-\index{LiquidPlanner@{LiquidPlanner}!tasks\_\-delete@{tasks\_\-delete}}
-\index{tasks\_\-delete@{tasks\_\-delete}!LiquidPlanner@{LiquidPlanner}}
-\subsubsection[{tasks\_\-delete}]{\setlength{\rightskip}{0pt plus 5cm}LiquidPlanner::tasks\_\-delete (
+public \hypertarget{classLiquidPlanner_adb51bedafa48a1945b20a3a546521bb5}{\index{\-Liquid\-Planner@{\-Liquid\-Planner}!tasks\-\_\-delete@{tasks\-\_\-delete}}
+\index{tasks\-\_\-delete@{tasks\-\_\-delete}!LiquidPlanner@{\-Liquid\-Planner}}
+\subsubsection[{tasks\-\_\-delete}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Liquid\-Planner\-::tasks\-\_\-delete} (
 \begin{DoxyParamCaption}
 \item[{\$}]{id}
 \end{DoxyParamCaption}
-)}}
-\label{classLiquidPlanner_adb51bedafa48a1945b20a3a546521bb5}
-Deletes a task from Liquid Planner
+)}}\label{classLiquidPlanner_adb51bedafa48a1945b20a3a546521bb5}
+\-Deletes a task from \-Liquid \-Planner
 
-Pass the ID of a task in Liquid Planner into this method and it will be deleted from the workspace. The raw response from the web service is returned so you can examine the result.
+\-Pass the \-I\-D of a task in \-Liquid \-Planner into this method and it will be deleted from the workspace. \-The raw response from the web service is returned so you can examine the result.
 
 
-\begin{DoxyParams}[1]{Parameters}
-int & {\em \$id} & the ID of the task in Liquid Planner\\
+\begin{DoxyParams}[1]{\-Parameters}
+int & {\em \$id} & the \-I\-D of the task in \-Liquid \-Planner\\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-string raw response from the API
+\begin{DoxyReturn}{\-Returns}
+string raw response from the \-A\-P\-I
 \end{DoxyReturn}
-public \hypertarget{classLiquidPlanner_acb040a00fc036f40ada6c04a1f041a8e}{
-\index{LiquidPlanner@{LiquidPlanner}!tasks\_\-track\_\-time@{tasks\_\-track\_\-time}}
-\index{tasks\_\-track\_\-time@{tasks\_\-track\_\-time}!LiquidPlanner@{LiquidPlanner}}
-\subsubsection[{tasks\_\-track\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}LiquidPlanner::tasks\_\-track\_\-time (
+public \hypertarget{classLiquidPlanner_afaddde49d5ccb8388bc811cbd24bafd9}{\index{\-Liquid\-Planner@{\-Liquid\-Planner}!tasks\-\_\-track\-\_\-time@{tasks\-\_\-track\-\_\-time}}
+\index{tasks\-\_\-track\-\_\-time@{tasks\-\_\-track\-\_\-time}!LiquidPlanner@{\-Liquid\-Planner}}
+\subsubsection[{tasks\-\_\-track\-\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Liquid\-Planner\-::tasks\-\_\-track\-\_\-time} (
 \begin{DoxyParamCaption}
 \item[{array \$}]{data, }
-\item[{\$}]{id}
+\item[{\$}]{taskid}
 \end{DoxyParamCaption}
-)}}
-\label{classLiquidPlanner_acb040a00fc036f40ada6c04a1f041a8e}
-Updates task time values, such as work completed and estimates
+)}}\label{classLiquidPlanner_afaddde49d5ccb8388bc811cbd24bafd9}
+\-Updates task time values, such as work completed and estimates
 
 
-\begin{DoxyParams}[1]{Parameters}
+\begin{DoxyParams}[1]{\-Parameters}
 array & {\em \$data} & values to apply to the specified task \\
 \hline
-int & {\em \$taskid} & ID of Liquid Planner task to update\\
+int & {\em \$taskid} & \-I\-D of \-Liquid \-Planner task to update\\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-array Response from Liquid Planner
+\begin{DoxyReturn}{\-Returns}
+array \-Response from \-Liquid \-Planner
+\end{DoxyReturn}
+public \hypertarget{classLiquidPlanner_a578c0b5f4bebd4b6d5bd9fa4094f47ef}{\index{\-Liquid\-Planner@{\-Liquid\-Planner}!workspace@{workspace}}
+\index{workspace@{workspace}!LiquidPlanner@{\-Liquid\-Planner}}
+\subsubsection[{workspace}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Liquid\-Planner\-::workspace} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classLiquidPlanner_a578c0b5f4bebd4b6d5bd9fa4094f47ef}
+\-Retrieves the current workspace details.
+
+\begin{DoxyReturn}{\-Returns}
+array \-Response from \-Liquid \-Planner
 \end{DoxyReturn}
 public 
 
-The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 
-liquidplanner.php\end{DoxyCompactItemize}
+liquidplanner.\-php\end{DoxyCompactItemize}
