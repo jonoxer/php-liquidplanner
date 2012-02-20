@@ -27,6 +27,8 @@ class LiquidPlanner
     private $email = '';
     private $password = '';
     private $serviceurl = '';
+    private $throttlewait = 15;
+    public  $debug = false;
 
     /**
      * Constructor
@@ -35,7 +37,8 @@ class LiquidPlanner
     {
         $this->email      = $email;
         $this->password   = $password;
-        $this->serviceurl = "https://app.liquidplanner.com/api/workspaces/".$workspaceID;
+        $this->baseurl	  = "https://app.liquidplanner.com/api";
+        $this->serviceurl = $this->baseurl . "/workspaces/".$workspaceID;
     }
 
     /**
@@ -57,6 +60,22 @@ class LiquidPlanner
         $url = $this->serviceurl.'/clients/'.$clientId.'/comments/'.$commentId;
         $response = $this->lp_delete($url);
         return($response);
+    }
+
+    /**
+     * Retrieves the specified task or a list of all tasks
+     *
+     * @param  int    $taskid ID of task.
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function tasks($taskid=NULL)
+    { 
+		$url = $this->serviceurl.'/tasks'.($taskid ? '/'.$taskid : '');
+        $response = $this->lp_get($url);
+        return($response);    
     }
 
     /**
@@ -131,16 +150,156 @@ class LiquidPlanner
         $response = $this->lp_post($url, $encodedData);
         return($response);
     }
+	
+    /**
+     * Retrieves the logged in user's account information.
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function account()
+    {
+        $url = $this->baseurl.'/account';
+        $response = $this->lp_get($url);
+        return($response);    
+    }
+
+    /**
+     * Retrieves the current workspace details.
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function workspace()
+    {
+        $url = $this->serviceurl;
+        $response = $this->lp_get($url);
+        return($response);    
+    }
+
+    /**
+     * Retrieves the specified client or a list of clients
+     *
+     * @param  int    $clientid ID of client.
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function clients($clientid=NULL)
+    { 
+		$url = $this->serviceurl.'/clients'.($clientid ? '/'.$clientid : '');
+        $response = $this->lp_get($url);
+        return($response);    
+    }
+
+    /**
+     * Creates a new client in Liquid Planner
+     *
+     * @param  string  $name          name of this client
+     * @param  string  $description   plain-text description of the client
+     * @param  string  $external_ref  arbitrary string; use e.g. to store a reference ID from an external system
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function clients_create($name, $description = '', $external_ref = '')
+    {
+        $encodedClient = json_encode(array('client' => array(
+        	'name' => $name,
+        	'description' => $description,
+        	'external_reference' => $external_ref
+        )));
+        $url = $this->serviceurl.'/clients';
+        $response = $this->lp_post($url, $encodedClient);
+        return($response);
+    }
+
+    /**
+     * Gets a list of comments on a client from Liquid Planner
+     *
+     * @param  int    $clientid ID of Liquid Planner client to get comments from 
+     * @param  int    $commentid ID of Liquid Planner client comment to get 
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    function clients_comments($clientid=NULL, $commentid=NULL)
+    { 
+        $url = $this->serviceurl.'/clients/'.$clientid.'/comments'.($commentid ? '/'.$commentid : '');
+        echo $url;
+        return $this->lp_get($url);
+    }
+
+    /**
+     * Retrieves all members in Liquid Planner
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function members()
+    {
+        $url = $this->serviceurl.'/members';
+        $response = $this->lp_get($url);
+        return($response);
+    }
+
+    /**
+     * Creates a new project in Liquid Planner
+     *
+     * @param  string  $name          name of this project
+     * @param  int	   $client_id     client ID associated with project
+     * @param  int	   $parent_id     parent ID associated with project
+     * @param  string  $description   plain-text description of the project
+     * @param  bool    $is_done       whether the project is done or not
+     * @param  string  $done_on       date the project was done on
+     * @param  string  $external_reference       
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function projects_create($name, $client_id, $parent_id, $description = '', $is_done = false, $done_on = '', $external_reference = '')
+    {
+        $encodedClient = json_encode(array('project' => array(
+        	'name' => $name, 
+        	'client_id' => $client_id,
+        	'parent_id' => $parent_id,
+        	'description' => $description,
+        	'is_done' => $is_done,
+        	'done_on' => $done_on,
+        	'external_reference' => $external_reference
+        )));
+        $url = $this->serviceurl.'/projects';
+        $response = $this->lp_post($url, $encodedClient);
+        return($response);
+    }
+
+    /**
+     * Retrieves the specified project or a list of projects
+     *
+     * @param  int    $projectid ID of project
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function projects($projectid=NULL)
+    { 
+		$url = $this->serviceurl.'/projects'.($projectid ? '/'.$projectid : '');
+        $response = $this->lp_get($url);
+        return($response);    
+    }
+
 
 /**************************************************************/
 
     function activities(array $data, $id=NULL)
-    { return array("Not yet implemented"); }
-
-    function clients(array $data)
-    { return array("Not yet implemented"); }
-
-    function clients_comments(array $data, $id=NULL)
     { return array("Not yet implemented"); }
 
     function clients_dependencies(array $data, $id=NULL)
@@ -169,7 +328,51 @@ class LiquidPlanner
         curl_close($conn);
 
         /* The response is JSON, so decode it and return the result as an array */
-        return(json_decode($response, true));
+        $results = json_decode($response, true);
+        
+        /* Check for Throttling from the API */
+        if((isset($results['type']) && $results['type'] == "Error") && (isset($results['error']) && $results['error'] == "Throttled"))
+        {
+        	//We're being throttled. Waith 15 seconds and call it again.
+			$this->throttle_message();
+			sleep($this->throttlewait);
+        	return $this->lp_post($url, $encodedTask);
+        }
+        
+        return $results;
+    }
+	
+	 /**
+     * Send data to the Liquid Planner API as a GET method
+     */
+    private function lp_get($url)
+    {
+        /* Set up the CURL object and execute it */
+        $conn = curl_init();
+        curl_setopt($conn, CURLOPT_HEADER, false);                                       // Suppress display of the response header
+        curl_setopt($conn, CURLOPT_HTTPHEADER, array("Content-Type: application/json")); // Must submit as JSON
+        curl_setopt($conn, CURLOPT_RETURNTRANSFER, true);                                // Return result as a string
+        curl_setopt($conn, CURLOPT_POST, false);                                          // Submit data as an HTTP POST
+        curl_setopt($conn, CURLOPT_ENCODING, "");                                        // Prevent GZIP compression of response from LP
+        curl_setopt($conn, CURLOPT_USERPWD, $this->email.":".$this->password);           // Authenticate
+        curl_setopt($conn, CURLOPT_URL, $url);                                           // Set the service URL
+        curl_setopt($conn, CURLOPT_SSL_VERIFYPEER, false);                               // Accept any SSL certificate
+        $response = curl_exec($conn);
+        curl_close($conn);
+
+        /* The response is JSON, so decode it and return the result as an array */
+        $results = json_decode($response, true);
+        
+        /* Check for Throttling from the API */
+        if((isset($results['type']) && $results['type'] == "Error") && (isset($results['error']) && $results['error'] == "Throttled"))
+        {
+        	//We're being throttled. Waith 15 seconds and call it again.
+			$this->throttle_message();
+			sleep($this->throttlewait);
+        	return $this->lp_get($url);
+        }
+        
+        return $results;
     }
 
     /**
@@ -189,6 +392,32 @@ class LiquidPlanner
         $response = curl_exec($conn);
         curl_close($conn);
 
-        return($response);
+        $results = json_decode($response, true);
+        
+        /* Check for Throttling from the API */
+        if((isset($results['type']) && $results['type'] == "Error") && (isset($results['error']) && $results['error'] == "Throttled"))
+        {
+        	//We're being throttled. Waith 15 seconds and call it again.
+			$this->throttle_message();
+			sleep($this->throttlewait);
+        	return $this->lp_delete($url);
+        }
+        
+        return $results;
+    }
+    
+    private function throttle_message()
+    {
+		if($this->debug === true)
+		{
+			echo '<p class="throttled">API Throttling in effect. Waiting ' . $this->throttlewait . ' seconds before trying again.</p>';
+
+			/* Clear the output buffer if it's turned on. */
+			if(ob_get_level() !== 0)
+			{
+		        ob_flush();
+		        flush();
+			}
+		}
     }
 }
