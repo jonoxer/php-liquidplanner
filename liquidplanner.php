@@ -63,6 +63,22 @@ class LiquidPlanner
     }
 
     /**
+     * Retrieves the specified task or a list of all tasks
+     *
+     * @param  int    $taskid ID of task.
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function tasks($taskid=NULL)
+    { 
+		$url = $this->serviceurl.'/tasks'.($taskid ? '/'.$taskid : '');
+        $response = $this->lp_get($url);
+        return($response);    
+    }
+
+    /**
      * Creates a new task in Liquid Planner
      *
      * @param  array  $data   values to apply to the newly created task
@@ -145,6 +161,20 @@ class LiquidPlanner
     public function account()
     {
         $url = $this->baseurl.'/account';
+        $response = $this->lp_get($url);
+        return($response);    
+    }
+
+    /**
+     * Retrieves the current workspace details.
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function workspace()
+    {
+        $url = $this->serviceurl;
         $response = $this->lp_get($url);
         return($response);    
     }
@@ -301,7 +331,7 @@ class LiquidPlanner
         $results = json_decode($response, true);
         
         /* Check for Throttling from the API */
-        if((isset($results['type']) && $results['type'] == "Error") || (isset($results['error']) && $results['error'] == "Throttled"))
+        if((isset($results['type']) && $results['type'] == "Error") && (isset($results['error']) && $results['error'] == "Throttled"))
         {
         	//We're being throttled. Waith 15 seconds and call it again.
 			$this->throttle_message();
@@ -334,7 +364,7 @@ class LiquidPlanner
         $results = json_decode($response, true);
         
         /* Check for Throttling from the API */
-        if((isset($results['type']) && $results['type'] == "Error") || (isset($results['error']) && $results['error'] == "Throttled"))
+        if((isset($results['type']) && $results['type'] == "Error") && (isset($results['error']) && $results['error'] == "Throttled"))
         {
         	//We're being throttled. Waith 15 seconds and call it again.
 			$this->throttle_message();
@@ -365,7 +395,7 @@ class LiquidPlanner
         $results = json_decode($response, true);
         
         /* Check for Throttling from the API */
-        if((isset($results['type']) && $results['type'] == "Error") || (isset($results['error']) && $results['error'] == "Throttled"))
+        if((isset($results['type']) && $results['type'] == "Error") && (isset($results['error']) && $results['error'] == "Throttled"))
         {
         	//We're being throttled. Waith 15 seconds and call it again.
 			$this->throttle_message();
