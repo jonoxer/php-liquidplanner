@@ -296,11 +296,42 @@ class LiquidPlanner
         return($response);    
     }
 
+	/**
+     * Retrieves the specified activity or a list of activities
+     *
+     * @param  int    $activityid ID of activity.
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+	function activities($activityid=NULL)
+    {
+		$url = $this->serviceurl.'/activities'.($activityid ? '/'.$activityid : '');
+        $response = $this->lp_get($url);
+        return($response);    
+	}
+	
+	/**
+     * Creates a new activity in Liquid Planner
+     *
+     * @param  array  $data   Values to apply to the newly created activity
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function activities_create(array $data)
+    {
+    	return array("Not yet implemented - expected soon");
+        $encodedActivity = json_encode(array('activity' => $data));
+        $url = $this->serviceurl.'/activities';
+		die($url);
+        $response = $this->lp_post($url, $encodedActivity);
+        return($response);
+    }
 
 /**************************************************************/
-
-    function activities(array $data, $id=NULL)
-    { return array("Not yet implemented"); }
 
     function clients_dependencies(array $data, $id=NULL)
     { return array("Not yet implemented"); }
@@ -366,7 +397,7 @@ class LiquidPlanner
         /* Check for Throttling from the API */
         if((isset($results['type']) && $results['type'] == "Error") && (isset($results['error']) && $results['error'] == "Throttled"))
         {
-        	//We're being throttled. Waith 15 seconds and call it again.
+        	//We're being throttled. Wait 15 seconds and call it again.
 			$this->throttle_message();
 			sleep($this->throttlewait);
         	return $this->lp_get($url);
