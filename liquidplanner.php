@@ -326,7 +326,6 @@ class LiquidPlanner
     	return array("Not yet implemented - expected soon");
         $encodedActivity = json_encode(array('activity' => $data));
         $url = $this->serviceurl.'/activities';
-		die($url);
         $response = $this->lp_post($url, $encodedActivity);
         return($response);
     }
