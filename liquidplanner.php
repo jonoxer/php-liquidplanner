@@ -296,6 +296,25 @@ class LiquidPlanner
         return($response);    
     }
 
+
+
+    /**
+     * Retrieves the specified package or a list of packages
+     *
+     * @param  int    $packageid ID of package
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function packages($packageid=NULL)
+    { 
+		$url = $this->serviceurl.'/packages'.($packageid ? '/'.$packageid : '');
+        $response = $this->lp_get($url);
+        return($response);    
+    }
+    
+
 	/**
      * Retrieves the specified activity or a list of activities
      *
