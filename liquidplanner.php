@@ -72,13 +72,29 @@ class LiquidPlanner
      *
      * @access public
      */
-    public function tasks($taskid=NULL, $params=NULL)
+    public function tasks($taskid=NULL, $params=array())
     { 
         $url = $this->serviceurl.'/tasks'.($taskid ? '/'.$taskid : '').($params ? '?'.http_build_query($params) : '');
         $response = $this->lp_get($url);
         return($response);    
     }
     
+    /**
+     * Retrieves timesheets optionally filtered by parameters.
+     *
+     * @param  array  Parameters to send such as date and count limiters.
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function timesheets($params=array())
+    { 
+        $url = $this->serviceurl.'/timesheets/'.($params ? '?'.http_build_query($params) : '');
+        $response = $this->lp_get($url);
+        return($response);    
+    }
+
     /**
      * Retrieves timesheet entries optionally filtered by parameters.
      *
@@ -88,9 +104,9 @@ class LiquidPlanner
      *
      * @access public
      */
-    public function timesheet_entries($params=NULL)
+    public function timesheet_entries($timesheetid=NULL, $params=array())
     { 
-        $url = $this->serviceurl.'/timesheet_entries/'.($params ? '?'.http_build_query($params) : '');
+        $url = $this->serviceurl.($timesheetid ? '/timesheets/'.$timesheetid : '').'/timesheet_entries'.($params ? '?'.http_build_query($params) : '');
         $response = $this->lp_get($url);
         return($response);    
     }
