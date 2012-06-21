@@ -74,7 +74,23 @@ class LiquidPlanner
      */
     public function tasks($taskid=NULL, $params=NULL)
     { 
-		$url = $this->serviceurl.'/tasks'.($taskid ? '/'.$taskid : '').($params ? '?'.http_build_query($params) : '');
+        $url = $this->serviceurl.'/tasks'.($taskid ? '/'.$taskid : '').($params ? '?'.http_build_query($params) : '');
+        $response = $this->lp_get($url);
+        return($response);    
+    }
+    
+    /**
+     * Retrieves timesheet entries optionally filtered by parameters.
+     *
+     * @param  array  Parameters to send such as date and count limiters. Documentation here: http://www.liquidplanner.com/api-guide/technical-reference/filtering-timesheet-entries.html
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function timesheet_entries($params=NULL)
+    { 
+        $url = $this->serviceurl.'/timesheet_entries/'.($params ? '?'.http_build_query($params) : '');
         $response = $this->lp_get($url);
         return($response);    
     }
