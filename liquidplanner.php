@@ -236,17 +236,29 @@ class LiquidPlanner
     }
 
     /**
-     * Retrieves all members in Liquid Planner
+     * Retrieves the specified member or a list of members
      *
      * @return array  Response from Liquid Planner
      *
      * @access public
      */
-    public function members()
+    public function members($memberid=NULL)
     {
-        $url = $this->serviceurl.'/members';
+        $url = $this->serviceurl.'/members'.($memberid? '/'.$memberid : '');
         $response = $this->lp_get($url);
         return($response);
+    }
+
+    /**
+     * Retrieves one member
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function member($memberid)
+    {
+        return($this->members($memberid));
     }
 
     /**
