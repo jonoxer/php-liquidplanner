@@ -66,14 +66,47 @@ class LiquidPlanner
      * Retrieves the specified task or a list of all tasks
      *
      * @param  int    $taskid ID of task.
+     * @param  array  Parameters to send such as date and count limiters.
      *
      * @return array  Response from Liquid Planner
      *
      * @access public
      */
-    public function tasks($taskid=NULL)
+    public function tasks($taskid=NULL, $params=array())
     { 
-		$url = $this->serviceurl.'/tasks'.($taskid ? '/'.$taskid : '');
+        $url = $this->serviceurl.'/tasks'.($taskid ? '/'.$taskid : '').($params ? '?'.http_build_query($params) : '');
+        $response = $this->lp_get($url);
+        return($response);    
+    }
+    
+    /**
+     * Retrieves timesheets optionally filtered by parameters.
+     *
+     * @param  array  Parameters to send such as date and count limiters.
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function timesheets($params=array())
+    { 
+        $url = $this->serviceurl.'/timesheets/'.($params ? '?'.http_build_query($params) : '');
+        $response = $this->lp_get($url);
+        return($response);    
+    }
+
+    /**
+     * Retrieves timesheet entries optionally filtered by parameters.
+     *
+     * @param  array  Parameters to send such as date and count limiters. Documentation here: http://www.liquidplanner.com/api-guide/technical-reference/filtering-timesheet-entries.html
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function timesheet_entries($timesheetid=NULL, $params=array())
+    { 
+        $url = $this->serviceurl.($timesheetid ? '/timesheets/'.$timesheetid : '').'/timesheet_entries'.($params ? '?'.http_build_query($params) : '');
         $response = $this->lp_get($url);
         return($response);    
     }
@@ -236,17 +269,29 @@ class LiquidPlanner
     }
 
     /**
-     * Retrieves all members in Liquid Planner
+     * Retrieves the specified member or a list of members
      *
      * @return array  Response from Liquid Planner
      *
      * @access public
      */
-    public function members()
+    public function members($memberid=NULL)
     {
-        $url = $this->serviceurl.'/members';
+        $url = $this->serviceurl.'/members'.($memberid? '/'.$memberid : '');
         $response = $this->lp_get($url);
         return($response);
+    }
+
+    /**
+     * Retrieves one member
+     *
+     * @return array  Response from Liquid Planner
+     *
+     * @access public
+     */
+    public function member($memberid)
+    {
+        return($this->members($memberid));
     }
 
     /**
