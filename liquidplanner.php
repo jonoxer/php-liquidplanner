@@ -66,14 +66,15 @@ class LiquidPlanner
      * Retrieves the specified task or a list of all tasks
      *
      * @param  int    $taskid ID of task.
+     * @param  array  Parameters to send such as date and count limiters.
      *
      * @return array  Response from Liquid Planner
      *
      * @access public
      */
-    public function tasks($taskid=NULL)
+    public function tasks($taskid=NULL, $params=NULL)
     { 
-		$url = $this->serviceurl.'/tasks'.($taskid ? '/'.$taskid : '');
+		$url = $this->serviceurl.'/tasks'.($taskid ? '/'.$taskid : '').($params ? '?'.http_build_query($params) : '');
         $response = $this->lp_get($url);
         return($response);    
     }
