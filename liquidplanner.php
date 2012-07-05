@@ -415,7 +415,42 @@ class LiquidPlanner
         
         return $results;
     }
-	
+    
+    /**
+     * Send data to the Liquid Planner API as a PUT method with a
+     * JSON-encoded payload
+     */
+    private function lp_put($url, $task)
+    {
+        /* Set up the CURL object and execute it */
+        $conn = curl_init();
+        curl_setopt($conn, CURLOPT_HEADER, false);                                       // Suppress display of the response header
+        curl_setopt($conn, CURLOPT_RETURNTRANSFER, true);                                // Return result as a string
+        curl_setopt($conn, CURLOPT_POST, false);                                         // Submit data as an HTTP POST
+        curl_setopt($conn, CURLOPT_CUSTOMREQUEST, 'PUT');                                // Submit data as an HTTP POST
+        curl_setopt($conn, CURLOPT_POSTFIELDS, http_build_query($task));                            // Set the POST field values
+        curl_setopt($conn, CURLOPT_ENCODING, "");                                        // Prevent GZIP compression of response from LP
+        curl_setopt($conn, CURLOPT_USERPWD, $this->email.":".$this->password);           // Authenticate
+        curl_setopt($conn, CURLOPT_URL, $url);                                           // Set the service URL
+        curl_setopt($conn, CURLOPT_SSL_VERIFYPEER, false);                               // Accept any SSL certificate
+        $response = curl_exec($conn);
+        curl_close($conn);
+
+        /* The response is JSON, so decode it and return the result as an array */
+        $results = json_decode($response, true);
+        
+        /* Check for Throttling from the API */
+        if((isset($results['type']) && $results['type'] == "Error") && (isset($results['error']) && $results['error'] == "Throttled"))
+        {
+            //We're being throttled. Wait the right amount of time and call it again.
+            $this->throttle_message($results);
+            sleep($this->get_wait_time($results['message']));
+            return $this->lp_put($url, $task);
+        }
+        
+        return $results;
+    }
+    
 	 /**
      * Send data to the Liquid Planner API as a GET method
      */
